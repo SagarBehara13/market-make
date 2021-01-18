@@ -1,0 +1,9 @@
+{
+  "name": "blockchain",
+  "version": "1.0.0",
+  "description": "Blockchain for market make hackathon",
+  "main": "index.js",
+  "author": "Yash Agrawal",
+  "license": "MIT",
+  "private": false
+}
