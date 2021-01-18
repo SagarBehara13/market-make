@@ -1,6 +1,6 @@
 pragma solidity >=0.6.0 <0.7.5;
 
-import "./token/ShareToken.sol";
+import "./token/SharesToken.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract LandRFT is ERC721{
