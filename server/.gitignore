@@ -1,0 +1,13 @@
+# Environment & Editor.
+.env
+.idea/
+.vscode/
+
+package-lock.json
+
+# Misc.
+.DS_Store
+node_modules/
+
+# Logs.
+npm-debug.log
