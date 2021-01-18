@@ -1,0 +1,10 @@
+{
+  "name": "Market-make",
+  "version": "1.0.0",
+  "description": "Project for market make hackathon.",
+  "main": "index.js",
+  "repository": "git@github.com:ya98/market-make.git",
+  "author": "Yash Agrawal <yashagrawal18@outlook.com>",
+  "license": "MIT",
+  "private": false
+}
