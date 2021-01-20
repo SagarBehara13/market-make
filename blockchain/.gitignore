@@ -1,8 +1,0 @@
-# Environment & Editor.
-.idea/
-.vscode/
-.env
-
-# Misc.
-.DS_Store
-node_modules/
