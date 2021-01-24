@@ -1,8 +1,7 @@
 {
   "name": "market-make",
-  "version": "1.0.0",
-  "description": "A dApp for market make eth hackathon",
-  "main": "index.js",
+  "version": "0.1.0",
+  "description": "Defi Based App for Marketmake hackathon",
   "author": "Yash Agrawal & Sagar Behara",
   "license": "MIT",
   "private": false

@@ -1,7 +1,7 @@
 {
-  "name": "MarketMake",
+  "name": "market-make-client",
   "version": "0.1.0",
-  "description": "Defi Based App for Marketmake hackathon",
+  "description": "Client for market-make, A defi Based App for Marketmake hackathon",
   "author": "sagarbehara13@gmail.com",
   "dependencies": {
     "@openzeppelin/contracts": "^3.3.0",
