@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import './App.css';
+import logo from '../assets/images/logo.png';
 
 
 class App extends Component {
@@ -27,7 +28,7 @@ class App extends Component {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img src='/assets/images/logo.png' className="App-logo" alt="logo" />
+                  <img src={logo} className="App-logo" alt="logo" />
                 </a>
                 <h1>Dapp University Starter Kit</h1>
                 <p>
