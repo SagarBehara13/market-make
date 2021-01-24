@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 import './App.css';
-import logo from '../logo.png';
 
 
 class App extends Component {
+
   render() {
     return (
       <div>
@@ -27,7 +27,7 @@ class App extends Component {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img src={logo} className="App-logo" alt="logo" />
+                  <img src='/assets/images/logo.png' className="App-logo" alt="logo" />
                 </a>
                 <h1>Dapp University Starter Kit</h1>
                 <p>
