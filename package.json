@@ -4,5 +4,8 @@
   "description": "Defi Based App for Marketmake hackathon",
   "author": "Yash Agrawal & Sagar Behara",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "scripts": {
+    "client": "cd client && npm run start"
+  }
 }
