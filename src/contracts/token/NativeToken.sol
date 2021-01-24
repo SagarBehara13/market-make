@@ -3,9 +3,9 @@ pragma solidity >=0.5.0 <0.8.0;
 import "../interfaces/IERC20.sol";
 import "@openzeppelin/contracts/math/SafeMath.sol";
 
-contract ShareToken is IERC20 {
-    string  public name;
-    string  public symbol;
+contract RefungibleEstateToken is IERC20 {
+    string public name;
+    string public symbol;
     uint public tokenPrice;
     uint256 totalSupply_;
     
@@ -17,13 +17,10 @@ contract ShareToken is IERC20 {
     mapping(address => uint256) balances;
     mapping(address => mapping (address => uint256)) allowed;
     
-    constructor(string memory _name, string memory _symbol, uint256 total) public {
-        totalSupply_ = total;
-        balances[msg.sender] = totalSupply_;
-        name = _name;
-        symbol = _symbol;
-        
-        approve(msg.sender, total);
+    constructor() public {
+        name = "Refungible Estate";
+        symbol = "REF";
+        totalSupply_ = 10000000000;
     }
     
     function totalSupply() public override view returns (uint256) {
@@ -62,19 +59,8 @@ contract ShareToken is IERC20 {
         return true;
     }
     
-    function buyShare(address owner, address buyer, uint256 numTokens) public returns (bool) {
-        require(numTokens <= balances[owner]);
-        require(numTokens <= allowed[owner][msg.sender]);
-        balances[owner] = balances[owner].sub(numTokens);
-        allowed[owner][msg.sender] = allowed[owner][msg.sender].sub(numTokens);
-        balances[buyer] = balances[buyer].add(numTokens);
-        emit Transfer(owner, buyer, numTokens);
-        return true;
-    }
-    
-    function returnName() public view returns (string memory){
-        return name;
+    function faucet (uint256 amount) public {
+        totalSupply_ = totalSupply_.add(amount);
+        balances[msg.sender] = balances[msg.sender].add(amount);
     }
 }
-
-

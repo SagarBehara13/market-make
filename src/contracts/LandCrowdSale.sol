@@ -1,13 +1,11 @@
 pragma solidity >=0.6.0 <0.7.5;
 
 import "./token/SharesToken.sol";
-import "./token/Nft.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
-contract LandRFT {
-    
-    address owner;
-    uint landCounter = 0;
+contract LandCrowdSale {
+    address payable public vault;
+    uint public landCounter = 0;
     
     struct NFTDetailsStruct {
         uint id;
@@ -27,6 +25,7 @@ contract LandRFT {
         uint nftId;
         uint landBlockId;
         address owner;
+        bool available;
         bool onLoan;
         address loanedOwner;
         uint cleanlinessScore;
@@ -35,18 +34,14 @@ contract LandRFT {
     }
     
     mapping(uint => ShareToken) public shareTokens;
-    mapping(uint => NftToken) public nftTokens;
+    mapping(uint => address) public nftTokens;
     mapping(uint => NFTDetailsStruct) public nftDetails;
-    mapping(uint => mapping(address => NFTSharesStruct)) public sharesdetails;
+    mapping(uint => mapping(address => NFTSharesStruct[])) public usersSharesdetails;
+    mapping(uint => NFTSharesStruct[]) public sharesdetails;
     mapping(uint => mapping(address => uint)) public sharesCount;
     
-    modifier onlyOwner {
-      require(msg.sender == owner);
-      _;
-    }
-    
     constructor() public {
-        owner = msg.sender;
+        vault = msg.sender;
     }
     
     function _mint(
@@ -55,13 +50,13 @@ contract LandRFT {
         uint _totalSqft, 
         uint _pricePerSqft,
         uint _monthlyRent,
-        string memory _image
-    ) public onlyOwner {
+        string memory _image,
+        address nftAddress
+    ) public {
         
         landCounter++;
         
-        NftToken _nftToken = new NftToken(_name, _symbol, msg.sender, landCounter);
-        nftTokens[landCounter] = _nftToken;
+        nftTokens[landCounter] = nftAddress;
         
         ShareToken _shareToken = new ShareToken(_name, _symbol, _totalSqft);
         shareTokens[landCounter] = _shareToken;
@@ -69,43 +64,31 @@ contract LandRFT {
         nftDetails[landCounter] = NFTDetailsStruct(landCounter, _name, _symbol, msg.sender, address(_shareToken), _totalSqft, _pricePerSqft, _monthlyRent, _image, _totalSqft, 0);
     }
     
-     function buyShare(uint _amount, uint _nftID, uint[] memory _landBlockID) public payable {
-        require(msg.sender != owner, 'Admin cannot buy shares');
+    function buyShare(uint _nftID, uint[] memory _landBlockID) public payable {
+        require(msg.sender != vault, 'Admin cannot buy shares');
         
+        uint _shareAmount = _landBlockID.length; 
         NFTDetailsStruct memory _nftDetails = nftDetails[_nftID];
         _nftDetails.shareCounter = _nftDetails.shareCounter + 1;
-        _nftDetails.sqftRemaining = _nftDetails.sqftRemaining - _amount;
+        _nftDetails.sqftRemaining = _nftDetails.sqftRemaining - _shareAmount;
         nftDetails[_nftID] = _nftDetails;
        
         uint userShare = sharesCount[_nftID][msg.sender];
-        
+
         for (uint i = 0; i < _landBlockID.length; i++) {
-            sharesdetails[_nftID][msg.sender] = NFTSharesStruct(_nftID, _landBlockID[i], msg.sender, false, msg.sender, 0, 0, 0);
+            usersSharesdetails[_nftID][msg.sender].push(NFTSharesStruct(_nftID, _landBlockID[i], msg.sender, false, false, msg.sender, 0, 0, 0));
+            sharesdetails[_nftID].push(NFTSharesStruct(_nftID, _landBlockID[i], msg.sender, false, false, msg.sender, 0, 0, 0));
         }
         
         if (userShare > 0) {
-            userShare = userShare + _amount;
+            userShare = userShare + _shareAmount;
             sharesCount[_nftID][msg.sender] = userShare;
+        } else {
+            sharesCount[_nftID][msg.sender] = _shareAmount;
         }
         
-        shareTokens[_nftID].transferFrom(address(this), msg.sender, _amount);
+        // REF.approve(msg.sender, _amount);
+        // REF.transferFrom(msg.sender, vault, _amount);
+        shareTokens[_nftID].transferFrom(address(this), msg.sender, _shareAmount);
     }
-    
-    // // unsed function
-    // function approveCrowdSale(uint amount,uint id) public onlyOwner {
-    //     shareTokens[id].approve(address(this), amount);
-    // }
-    
-    // // helper functions
-    // function getERC20Name(uint id) public view returns(string memory) {
-    //     return shareTokens[id].returnName();
-    // }
-    
-    // function getNftBalance(uint id) public view returns (string memory){
-    //     return nftTokens[id].getNftName();
-    // }
-    
-    // function nftOwner(uint id) public view returns (address) {
-    //     return nftTokens[id].getNftOwner();
-    // }
-}
+}    
