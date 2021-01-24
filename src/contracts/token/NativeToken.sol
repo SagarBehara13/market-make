@@ -2,8 +2,9 @@
 
 pragma solidity >=0.5.0 <0.8.0;
 
-import "../interfaces/IERC20.sol";
 import "@openzeppelin/contracts/math/SafeMath.sol";
+
+import "../interfaces/IERC20.sol";
 
 contract RefungibleEstateToken is IERC20 {
     string public name;
