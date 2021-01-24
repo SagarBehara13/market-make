@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import './App.css';
-import logo from '../assets/images/logo.png';
+import './style.css';
+import logo from '../../assets/images/logo.png';
 
 
 class App extends Component {
@@ -32,7 +32,7 @@ class App extends Component {
                 </a>
                 <h1>Dapp University Starter Kit</h1>
                 <p>
-                  Edit <code>src/components/App.js</code> and save to reload.
+                  Edit and save to reload.
                 </p>
                 <a
                   className="App-link"
