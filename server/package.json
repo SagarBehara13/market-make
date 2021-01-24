@@ -1,0 +1,9 @@
+{
+  "name": "market-make-server",
+  "version": "1.0.0",
+  "description": "Server backend rest api for market make",
+  "main": "index.js",
+  "author": "Yash Agrawal & Sagar Behara",
+  "license": "MIT",
+  "private": false
+}
