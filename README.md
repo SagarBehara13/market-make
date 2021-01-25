@@ -1,4 +1,4 @@
-Market Make Hackathon
-=====================
+Market Make Hackathon Client
+============================
 
-Defi Based App for Marketmake hackathon
+Client defi Based App for Marketmake hackathon
