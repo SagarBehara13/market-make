@@ -1,9 +1,0 @@
-{
-  "name": "market-make-server",
-  "version": "1.0.0",
-  "description": "Server for market-make, A defi Based App for Marketmake hackathon",
-  "main": "index.js",
-  "author": "Yash Agrawal & Sagar Behara",
-  "license": "MIT",
-  "private": false
-}
