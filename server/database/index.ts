@@ -33,7 +33,7 @@ export const open = (url?: string) => {
       } else {
         console.log('mongodb is connected')
         logger('mongodb is connected')
-        resolve()
+        //resolve()
       }
     })
   })

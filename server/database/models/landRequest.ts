@@ -4,7 +4,7 @@ export interface IMarketData {
   tokenId: number,
   name: string,
   symbol: string,
-  imageUrl: string,
+  images: string,
   details: string,
   sqftArea: number,
   pricePerSqft: number,
