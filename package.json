@@ -6,8 +6,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "client": "cd client && npm run start",
-    "server": "ts-node server/index.ts"
+    "server": "ts-node server/index.ts",
+    "client": "cd client && npm run start"
   },
   "dependencies": {
     "bluebird": "^3.7.2",
