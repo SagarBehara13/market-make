@@ -2,9 +2,10 @@ import LandRequest from '../database/models/landRequest'
 
 export const addData = async (data) => {
   const newRealEstate = new LandRequest({
+    tokenId: data.tokenId,
     name: data.name,
     symbol: data.symbol,
-    images: data.images,
+    imageUrl: data.imageUrl,
     details: data.details,
     sqftArea: data.sqftArea,
     pricePerSqft: data.pricePerSqft,
@@ -28,7 +29,7 @@ export const editData = async (data) => {
     marketData.set('tokenId', data.tokenId || marketData.tokenId)
     marketData.set('name', data.name || marketData.name)
     marketData.set('symbol', data.symbol || marketData.symbol)
-    marketData.set('images', data.images || marketData.images)
+    marketData.set('imageUrl', data.imageUrl || marketData.imageUrl)
     marketData.set('details', data.details || marketData.details)
     marketData.set('sqftArea', data.sqftArea || marketData.sqftArea)
     marketData.set('pricePerSqft', data.pricePerSqft || marketData.pricePerSqft)
@@ -63,6 +64,8 @@ export const getData = async (data) => {
       tokenId: data.tokenId
     })
 
+    console.log(data, marketData);
+    
     return marketData || {}
   } catch(e){
     console.log(e)
