@@ -63,7 +63,7 @@ export const deleteData = async (data) => {
 export const getData = async (data) => {
   try{
     const marketData = await LandRequest.findOne({
-      name: data.name
+      tokenId: data.tokenId
     })
 
     console.log(data, marketData);
