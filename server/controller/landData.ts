@@ -2,7 +2,7 @@ import LandRequest from '../database/models/landRequest'
 
 export const addData = async (data) => {
   const newRealEstate = new LandRequest({
-    tokenId: String(data.tokenId),
+    tokenId: data.tokenId,
     name: data.name,
     symbol: data.symbol,
     imageUrl: data.imageUrl,
@@ -26,7 +26,7 @@ export const addData = async (data) => {
 export const editData = async (data) => {
   const marketData = await LandRequest.findOne({ name: data.name, owner: data.owner })
   if(marketData){
-    marketData.set('tokenId', String(data.tokenId) || marketData.tokenId)
+    marketData.set('tokenId', data.tokenId || marketData.tokenId)
     marketData.set('name', data.name || marketData.name)
     marketData.set('symbol', data.symbol || marketData.symbol)
     marketData.set('imageUrl', data.imageUrl || marketData.imageUrl)
@@ -61,7 +61,7 @@ export const deleteData = async (data) => {
 export const getData = async (data) => {
   try{
     const marketData = await LandRequest.findOne({
-      tokenId: data.tokenId
+      name: data.name
     })
 
     console.log(data, marketData);
