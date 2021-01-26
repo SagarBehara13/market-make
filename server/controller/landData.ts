@@ -8,6 +8,7 @@ export const addData = async (data) => {
     imageUrl: data.imageUrl,
     details: data.details,
     sqftArea: data.sqftArea,
+    valutAddress: data.valutAddress,
     pricePerSqft: data.pricePerSqft,
     type: data.type,
     rent: data.rent,
@@ -32,6 +33,7 @@ export const editData = async (data) => {
     marketData.set('imageUrl', data.imageUrl || marketData.imageUrl)
     marketData.set('details', data.details || marketData.details)
     marketData.set('sqftArea', data.sqftArea || marketData.sqftArea)
+    marketData.set('valutAddress', data.valutAddress || marketData.valutAddress)
     marketData.set('pricePerSqft', data.pricePerSqft || marketData.pricePerSqft)
     marketData.set('type', data.type || marketData.type)
     marketData.set('rent', data.rent || marketData.rent)
