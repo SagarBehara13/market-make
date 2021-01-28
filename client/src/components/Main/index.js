@@ -3,6 +3,7 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 
 import Home from '../Home'
 import NavigationBar from '../NavigationBar'
+import Aavegotchi from '../Aavegotchi'
 
 
 class Main extends Component {
@@ -13,7 +14,7 @@ class Main extends Component {
         <NavigationBar />
         <Switch>
           <Route path="/home" component={Home} />
-          <Redirect to="/home" />
+          <Redirect to="/home" component={Aavegotchi}/>
         </Switch>
       </div>
     )

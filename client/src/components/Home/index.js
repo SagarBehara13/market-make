@@ -20,7 +20,7 @@ class Home extends Component {
                 >
                   <img src={logo} className="App-logo" alt="logo" />
                 </a>
-                <h1>Dapp University Starter Kit</h1>
+                <h1>Dapp's University Starter Kit</h1>
                 <p>
                   Edit and save to reload.
                 </p>

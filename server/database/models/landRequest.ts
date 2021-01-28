@@ -1,7 +1,7 @@
 import { Document, Schema, model } from 'mongoose'
 
 export interface IMarketData {
-  tokenId: number,
+  tokenId: string,
   name: string,
   symbol: string,
   imageUrl: string,
@@ -20,7 +20,7 @@ export interface IMarketData {
 }
 
 const MarketDataSchema = new Schema({
-  tokenId: Number,
+  tokenId: String,
   name: String,
   symbol: String,
   imageUrl: String,
